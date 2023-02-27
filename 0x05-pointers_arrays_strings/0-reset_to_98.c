@@ -1,5 +1,11 @@
 #include"main.h"
 
-void reset_to_98(int *n) {
+/*
+ * rest_to_98 - sets the value to 98
+ * Return: Void
+ */
+
+void reset_to_98(int *n) 
+{
 	*n = 98;
 }
