@@ -6,7 +6,7 @@
 * Return: Void
 */
 
-void rev_string(char s*)
+void rev_string(char *s)
 {
 	int i = 0, n = 0, k = 0;
 
