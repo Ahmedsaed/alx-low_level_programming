@@ -1,7 +1,8 @@
 #include"main.h"
 
 /*
- * rest_to_98 - sets the value to 98
+ * rest_to_98
+ * Desciption: sets the value to 98
  * Return: Void
  */
 
