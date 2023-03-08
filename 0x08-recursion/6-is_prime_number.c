@@ -11,11 +11,11 @@
 int eval(int a, int b)
 {
 	if (b % 2 == 0 || b % 3 == 0 || b % a == 0)
-		return (false);
+		return (0);
 	else if (a * a < b)
 		return (eval(a + 1, b));
 	else
-		return (true);
+		return (1);
 }
 
 /**
