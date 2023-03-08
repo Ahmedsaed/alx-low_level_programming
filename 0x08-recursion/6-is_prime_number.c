@@ -10,7 +10,7 @@
  */
 int eval(int a, int b)
 {
-	if (b % 2 == 0 || b % 3 == 0 || b % a == 0)
+	if (b < 4 || b % 2 == 0 || b % 3 == 0 || b % a == 0)
 		return (0);
 	else if (a * a < b)
 		return (eval(a + 1, b));
