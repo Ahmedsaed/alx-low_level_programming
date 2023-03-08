@@ -8,7 +8,7 @@
  *
  * Return: Bool
  */
-bool eval(int a, int b)
+int eval(int a, int b)
 {
 	if (b % 2 == 0 || b % 3 == 0 || b % a == 0)
 		return (false);
