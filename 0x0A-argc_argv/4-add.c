@@ -13,6 +13,7 @@
 int main(int argc, char *argv[])
 {
 	int i, total = 0;
+	char *flag;
 
 	if (argc == 1)
 	{
@@ -22,9 +23,9 @@ int main(int argc, char *argv[])
 
 	for (i = 1; i < argc; i++)
 	{
-		int x = atoi(argv[i]);
+		int x = strtol(argv[i], &flag, 10);
 
-		if (x == 0)
+		if (*flag)
 		{
 			printf("Error\n");
 			return (1);
