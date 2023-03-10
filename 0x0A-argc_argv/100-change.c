@@ -24,6 +24,12 @@ int main(int argc, char *argv[])
 
 	while (cents)
 	{
+		if (cents < 0)
+		{
+			printf("0\n");
+			return (0);
+		}
+
 		if (cents >= 25)
 			cents -= 25;
 		else if (cents >= 10)
