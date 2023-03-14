@@ -24,10 +24,10 @@ char *str_concat(char *s1, char *s2)
 	if (!p)
 		return (NULL);
 
-	for (k = 0; k < i; k++)
+	for (k = 0; s1 != NULL && k < i; k++)
 		p[k] = s1[k];
 
-	for (k = 0; k <= j; k++)
+	for (k = 0; s2 != NULL && k <= j; k++)
 		p[k + i] = s2[k];
 
 	return (p);
