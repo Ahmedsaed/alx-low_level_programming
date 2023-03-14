@@ -27,7 +27,10 @@ char *_strdup(char *str)
 		return (NULL);
 
 	while (str[i] != '\0')
-		p[i] = str[++i];
+	{
+		p[i] = str[i];
+		i++;
+	}
 
 	return (p);
 }
