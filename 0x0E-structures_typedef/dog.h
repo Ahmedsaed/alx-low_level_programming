@@ -8,8 +8,6 @@
  * @age: Age of the dog
  * @owner: Owner of the dog
  */
-#include <stdio.h>
-
 struct dog
 {
 	char *name;
