@@ -8,6 +8,7 @@
  * @age: Age of the dog
  * @owner: Owner of the dog
  */
+#include <stdio.h>
 
 struct dog
 {
@@ -17,5 +18,6 @@ struct dog
 };
 
 void init_dog(struct dog *d, char *name, float age, char *owner);
+void print_dog(struct dog *d);
 
 #endif
