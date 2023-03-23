@@ -4,7 +4,7 @@
 /**
  * print_opcodes - print the opcodes of the given function
  *
- * @fun: address of a function
+ * @a: address of a function
  * @n: number of bytes to print
  *
  * Return: void
@@ -52,6 +52,6 @@ int main(int argc, char **argv)
 	}
 
 	print_opcodes((char *)&main, n);
-	
+
 	return (0);
 }
