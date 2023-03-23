@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		printf("ERROR\n");
+		printf("Error\n");
 		exit(1);
 	}
 
@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 
 	if (n < 0)
 	{
-		printf("ERROR\n");
+		printf("Error\n");
 		exit(2);
 	}
 
