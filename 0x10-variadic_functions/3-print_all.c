@@ -10,12 +10,12 @@
 void print_all(const char * const format, ...)
 {
 	va_list parms;
-	int i, flag;
+	int i = 0, flag;
 	char *str;
 
 	va_start(parms, format);
 
-	for (i = 0; format != NULL && format[i] != '\0'; i++)
+	while (format != NULL && format[i] != '\0')
 	{
 		switch (format[i])
 		{
@@ -45,6 +45,7 @@ void print_all(const char * const format, ...)
 		}
 		if (format[i + 1] != '\0' && flag == 0)
 			printf(", ");
+		i++;
 	}
 	printf("\n");
 	va_end(parms);
