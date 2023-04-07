@@ -6,7 +6,7 @@
  * @n: number
  * @index: index of bit to return
  *
- * Return: int - 1 on success, -1 otherwise 
+ * Return: int - 1 on success, -1 otherwise
  */
 int set_bit(unsigned long int *n, unsigned int index)
 {
@@ -18,6 +18,6 @@ int set_bit(unsigned long int *n, unsigned int index)
 	mask <<= index;
 
 	*n = *n | mask;
-	
+
 	return (1);
 }
