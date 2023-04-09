@@ -38,7 +38,7 @@ void check(int value, char *filename, int fd, int error_code)
 
 	if (fd != -1)
 		close_fd(fd);
-	
+
 	if (error_code == 1)
 		dprintf(STDERR_FILENO, "ERROR: couldn't open %s\n", filename);
 	else if (error_code == 2)
