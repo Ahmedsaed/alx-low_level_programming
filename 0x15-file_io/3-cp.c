@@ -16,7 +16,11 @@ int main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
-		dprintf(2, "Usage: %s file_from file_to\n", argv[0]);
+		dprintf(
+			STDERR_FILENO,
+			"Usage: %s file_from file_to\n",
+			argv[0]
+		);
 		exit(97);
 	}
 
@@ -68,7 +72,7 @@ void copy_file(char *file_from, char *file_to)
 /**
  * check - checks for errors
  *
- * @value: error flag
+ * @value: flag
  * @filename: filename to print in error message
  * @fd_from: file descriptor of file_from
  * @fd_to: file descriptor of file_to
@@ -89,17 +93,29 @@ void check(int value, char *filename, int fd_from, int fd_to, int error_code)
 
 	if (error_code == 98)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", filename);
+		dprintf(
+			STDERR_FILENO,
+			"Error: Can't read from file %s\n",
+			filename
+		);
 		exit(98);
 	}
 	else if (error_code == 99)
 	{
-		dprintf(2, "Error: Can't write to %s\n", filename);
+		dprintf(
+			STDERR_FILENO,
+			"Error: Can't write to %s\n",
+			filename
+		);
 		exit(99);
 	}
 	else if (error_code == 100)
 	{
-		dprintf(2, "Error: Can't close fd %s\n", filename);
+		dprintf(
+			STDERR_FILENO,
+			"Error: Can't close fd %s\n",
+			filename
+		);
 		exit(100);
 	}
 }
