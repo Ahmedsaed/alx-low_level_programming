@@ -43,9 +43,9 @@ void check(int value, char *filename, int fd, int error_code)
  */
 int isElf(unsigned char *e_ident)
 {
-	if (	e_ident[0] != 127 ||
+	if (e_ident[0] != 127 ||
 		e_ident[1] != 'E' ||
-	       	e_ident[2] != 'L' ||
+		e_ident[2] != 'L' ||
 		e_ident[3] != 'F'
 	)
 		return (1);
@@ -199,7 +199,7 @@ void print_type(uint16_t e_type)
 }
 
 /**
- * print_entry - prints the virtual address to which the system  first 
+ * print_entry - prints the virtual address to which the system  first
  * transfers  control,  thus starting the process.
  *
  * @e_entry: entry point address
@@ -232,15 +232,15 @@ void print_elf_header(char *filename)
 {
 	ElfW(Ehdr) header;
 	int fd = open(filename, O_RDONLY), r;
-	
+
 	check(fd, filename, fd, 1);
-	
+
 	r = read(fd, &header, sizeof(header));
 	check(r, filename, fd, 2);
 
 	if (isElf(header.e_ident))
 		check(-1, filename, fd, 3);
-	
+
 	printf("ELF Header:\n");
 	print_magic(header.e_ident);
 	print_class(header.e_ident);
