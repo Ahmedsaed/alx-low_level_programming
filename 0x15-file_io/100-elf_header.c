@@ -63,9 +63,9 @@ int isElf(unsigned char *e_ident)
 		e_ident[2] != 'L' ||
 		e_ident[3] != 'F'
 	)
-		return (1);
+		return (0);
 
-	return (0);
+	return (1);
 }
 
 /**
@@ -111,13 +111,13 @@ void print_data(unsigned char *e_ident)
 {
 	printf("  Data:                              ");
 	if (e_ident[EI_DATA] == ELFDATANONE)
-		printf("none\n");
+		printf("none");
 	else if (e_ident[EI_DATA] == ELFDATA2LSB)
 		printf("2's complement, little endian");
 	else if (e_ident[EI_DATA] == ELFDATA2MSB)
 		printf("2's complement, big endian");
 	else
-		printf("<unknown: %x>", e_ident[EI_CLASS]);
+		printf("<unknown: %x>", e_ident[EI_DATA]);
 	printf("\n");
 }
 
@@ -195,9 +195,13 @@ void print_apiv(unsigned char *e_ident)
  * print_type - the object file type
  *
  * @e_type: the type of the file
+ * @e_ident: the ident of the file
  */
-void print_type(uint16_t e_type)
+void print_type(uint16_t e_type, unsigned char *e_ident)
 {
+	if (e_ident[EI_DATA] == ELFDATA2MSB)
+		e_type >>= 8;
+
 	printf("  Type:                              ");
 	if (e_type == ET_NONE)
 		printf("NONE (None)\n");
@@ -253,7 +257,7 @@ void print_elf_header(char *filename)
 	r = read(fd, &header, sizeof(header));
 	check(r, filename, fd, 2);
 
-	if (isElf(header.e_ident))
+	if (!isElf(header.e_ident))
 		check(-1, filename, fd, 3);
 
 	printf("ELF Header:\n");
@@ -263,7 +267,7 @@ void print_elf_header(char *filename)
 	print_version(header.e_ident);
 	print_osapi(header.e_ident);
 	print_apiv(header.e_ident);
-	print_type(header.e_type);
+	print_type(header.e_type, header.e_ident);
 	print_entry(header.e_entry, header.e_ident);
 
 	close_fd(fd);
