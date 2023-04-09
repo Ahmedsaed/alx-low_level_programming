@@ -250,6 +250,8 @@ void print_elf_header(char *filename)
 	print_apiv(header.e_ident);
 	print_type(header.e_type);
 	print_entry(header.e_entry, header.e_ident);
+
+	close(fd);
 }
 
 /**
