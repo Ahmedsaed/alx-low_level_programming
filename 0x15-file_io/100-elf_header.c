@@ -37,11 +37,11 @@ void check(int value, char *filename, int fd, int error_code)
 		close_fd(fd);
 
 	if (error_code == 1)
-		printf("ERROR: couldn't open %s\n", filename);
+		dprintf(STDERR_FILENO, "ERROR: couldn't open %s\n", filename);
 	else if (error_code == 2)
-		printf("ERROR: couldn't read %s\n", filename);
+		dprintf(STDERR_FILENO, "ERROR: couldn't read %s\n", filename);
 	else if (error_code == 3)
-		printf("ERROR: %s is not an ELF File\n", filename);
+		dprintf(STDERR_FILENO, "ERROR: %s is not an ELF File\n", filename);
 
 	exit(98);
 }
