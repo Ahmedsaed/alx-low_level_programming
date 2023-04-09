@@ -123,7 +123,7 @@ void print_version(unsigned char *e_ident)
 /**
  * print_osapi - operating system and ABI to which the object is targeted.
  *
- * @e_ident - e_ident of file
+ * @e_ident: e_ident of file
  */
 void print_osapi(unsigned char *e_ident)
 {
