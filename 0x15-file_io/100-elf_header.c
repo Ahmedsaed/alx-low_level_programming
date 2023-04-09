@@ -9,6 +9,18 @@
 #endif
 
 /**
+ * close_fd - closes file descriptor
+ *
+ * @fd: The file descriptor of the ELF file
+ */
+void close_fd(int fd)
+{
+	if (close(fd) == -1)
+		dprintf(STDERR_FILENO, "ERROR: Couldn't close file\n");
+	exit(98);
+}
+
+/**
  * check - checks for errors
  *
  * @value: flag
@@ -21,8 +33,8 @@ void check(int value, char *filename, int fd, int error_code)
 	if (value != -1)
 		return;
 
-	if (fd == -1)
-		close(fd);
+	if (fd != -1)
+		close_fd(fd);
 
 	if (error_code == 1)
 		printf("ERROR: couldn't open %s\n", filename);
@@ -77,7 +89,7 @@ void print_class(unsigned char *e_ident)
 {
 	printf("  Class:                             ");
 	if (e_ident[EI_CLASS] == ELFCLASSNONE)
-		printf("invalid");
+		printf("none\n");
 	else if (e_ident[EI_CLASS] == ELFCLASS32)
 		printf("ELF32");
 	else if (e_ident[EI_CLASS] == ELFCLASS64)
@@ -96,13 +108,13 @@ void print_data(unsigned char *e_ident)
 {
 	printf("  Data:                              ");
 	if (e_ident[EI_DATA] == ELFDATANONE)
-		printf("Unknown data format");
+		printf("none\n");
 	else if (e_ident[EI_DATA] == ELFDATA2LSB)
 		printf("2's complement, little endian");
 	else if (e_ident[EI_DATA] == ELFDATA2MSB)
 		printf("2's complement, big endian");
 	else
-		printf("<unknown: %x>", e_ident[EI_DATA]);
+		printf("<unknown: %x>", e_ident[EI_CLASS]);
 	printf("\n");
 }
 
@@ -185,7 +197,7 @@ void print_type(uint16_t e_type)
 {
 	printf("  Type:                              ");
 	if (e_type == ET_NONE)
-		printf("unknown type\n");
+		printf("NONE (None)\n");
 	else if (e_type == ET_REL)
 		printf("REL (Relocatable file)\n");
 	else if (e_type == ET_EXEC)
@@ -251,7 +263,7 @@ void print_elf_header(char *filename)
 	print_type(header.e_type);
 	print_entry(header.e_entry, header.e_ident);
 
-	close(fd);
+	close_fd(fd);
 }
 
 /**
